@@ -1,4 +1,4 @@
-/* Nuclear
+/* Sword
  * By AlloyTeam http://www.alloyteam.com/
  * Github: https://github.com/AlloyTeam/Sword
  * MIT Licensed.
