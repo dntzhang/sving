@@ -1,0 +1,290 @@
+﻿.hljs {
+    /*overflow-x: auto;*/
+    padding: .5em;
+    background: #fdf6e3;
+    color: #657b83;
+    -webkit-text-size-adjust: none;
+}
+
+.diff .hljs-header, .hljs-comment, .hljs-doctype, .hljs-javadoc, .hljs-pi, .lisp .hljs-string {
+    color: #93a1a1;
+}
+
+.css .hljs-tag, .hljs-addition, .hljs-keyword, .hljs-request, .hljs-status, .hljs-winutils, .method, .nginx .hljs-title {
+    color: #859900;
+}
+
+.hljs-command, .hljs-dartdoc, .hljs-hexcolor, .hljs-link_url, .hljs-number, .hljs-phpdoc, .hljs-regexp, .hljs-rules .hljs-value, .hljs-string, .hljs-tag .hljs-value, .tex .hljs-formula {
+    color: #2aa198;
+}
+
+.css .hljs-function, .hljs-built_in, .hljs-chunk, .hljs-decorator, .hljs-id, .hljs-identifier, .hljs-localvars, .hljs-title, .vhdl .hljs-literal {
+    color: #268bd2;
+}
+
+.hljs-attribute, .hljs-class .hljs-title, .hljs-constant, .hljs-link_reference, .hljs-parent, .hljs-type, .hljs-variable, .lisp .hljs-body, .smalltalk .hljs-number {
+    color: #b58900;
+}
+
+.css .hljs-pseudo, .diff .hljs-change, .hljs-attr_selector, .hljs-cdata, .hljs-header, .hljs-pragma, .hljs-preprocessor, .hljs-preprocessor .hljs-keyword, .hljs-shebang, .hljs-special, .hljs-subst, .hljs-symbol, .hljs-symbol .hljs-string {
+    color: #cb4b16;
+}
+
+.hljs-deletion, .hljs-important {
+    color: #dc322f;
+}
+
+.hljs-link_label {
+    color: #6c71c4;
+}
+
+.tex .hljs-formula {
+    background: #eee8d5;
+}
+
+.MathJax_Hover_Frame {
+    border-radius: .25em;
+    -webkit-border-radius: .25em;
+    -moz-border-radius: .25em;
+    -khtml-border-radius: .25em;
+    box-shadow: 0 0 15px #83A;
+    -webkit-box-shadow: 0 0 15px #83A;
+    -moz-box-shadow: 0 0 15px #83A;
+    -khtml-box-shadow: 0 0 15px #83A;
+    border: 1px solid #A6D!important;
+    display: inline-block;
+    position: absolute;
+}
+
+.MathJax_Hover_Arrow {
+    position: absolute;
+    width: 15px;
+    height: 11px;
+    cursor: pointer;
+}
+
+#MathJax_About {
+    position: fixed;
+    left: 50%;
+    width: auto;
+    text-align: center;
+    border: 3px outset;
+    padding: 1em 2em;
+    background-color: #DDD;
+    color: #000;
+    cursor: default;
+    font-family: message-box;
+    font-size: 120%;
+    font-style: normal;
+    text-indent: 0;
+    text-transform: none;
+    line-height: normal;
+    letter-spacing: normal;
+    word-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    float: none;
+    z-index: 201;
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -khtml-border-radius: 15px;
+    box-shadow: 0 10px 20px gray;
+    -webkit-box-shadow: 0 10px 20px gray;
+    -moz-box-shadow: 0 10px 20px gray;
+    -khtml-box-shadow: 0 10px 20px gray;
+    filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true');
+}
+
+.MathJax_Menu {
+    position: absolute;
+    background-color: #fff;
+    color: #000;
+    width: auto;
+    padding: 2px;
+    border: 1px solid #CCC;
+    margin: 0;
+    cursor: default;
+    font: menu;
+    text-align: left;
+    text-indent: 0;
+    text-transform: none;
+    line-height: normal;
+    letter-spacing: normal;
+    word-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    float: none;
+    z-index: 201;
+    box-shadow: 0 10px 20px gray;
+    -webkit-box-shadow: 0 10px 20px gray;
+    -moz-box-shadow: 0 10px 20px gray;
+    -khtml-box-shadow: 0 10px 20px gray;
+    filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true');
+}
+
+.MathJax_MenuItem {
+    padding: 2px 2em;
+    background: 0 0;
+}
+
+.MathJax_MenuArrow {
+    position: absolute;
+    right: .5em;
+    color: #666;
+}
+
+.MathJax_MenuActive .MathJax_MenuArrow {
+    color: #fff;
+}
+
+.MathJax_MenuArrow.RTL {
+    left: .5em;
+    right: auto;
+}
+
+.MathJax_MenuCheck {
+    position: absolute;
+    left: .7em;
+}
+
+    .MathJax_MenuCheck.RTL {
+        right: .7em;
+        left: auto;
+    }
+
+.MathJax_MenuRadioCheck {
+    position: absolute;
+    left: 1em;
+}
+
+    .MathJax_MenuRadioCheck.RTL {
+        right: 1em;
+        left: auto;
+    }
+
+.MathJax_MenuLabel {
+    padding: 2px 2em 4px 1.33em;
+    font-style: italic;
+}
+
+.MathJax_MenuRule {
+    border-top: 1px solid #CCC;
+    margin: 4px 1px 0;
+}
+
+.MathJax_MenuDisabled {
+    color: GrayText;
+}
+
+.MathJax_MenuActive {
+    background-color: Highlight;
+    color: HighlightText;
+}
+
+.MathJax_Menu_Close {
+    position: absolute;
+    width: 31px;
+    height: 31px;
+    top: -15px;
+    left: -15px;
+}
+
+#MathJax_Zoom {
+    position: absolute;
+    background-color: #F0F0F0;
+    overflow: auto;
+    display: block;
+    z-index: 301;
+    padding: .5em;
+    border: 1px solid #000;
+    margin: 0;
+    font-weight: 400;
+    font-style: normal;
+    text-align: left;
+    text-indent: 0;
+    text-transform: none;
+    line-height: normal;
+    letter-spacing: normal;
+    word-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    float: none;
+    box-shadow: 5px 5px 15px #AAA;
+    -webkit-box-shadow: 5px 5px 15px #AAA;
+    -moz-box-shadow: 5px 5px 15px #AAA;
+    -khtml-box-shadow: 5px 5px 15px #AAA;
+    filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true');
+}
+
+#MathJax_ZoomOverlay {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 300;
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    background-color: #fff;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+
+#MathJax_ZoomFrame {
+    position: relative;
+    display: inline-block;
+    height: 0;
+    width: 0;
+}
+
+#MathJax_ZoomEventTrap {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 302;
+    display: inline-block;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    background-color: #fff;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+
+.MathJax_Preview {
+    color: #888;
+}
+
+#MathJax_Message {
+    position: fixed;
+    left: 1px;
+    bottom: 2px;
+    background-color: #E6E6E6;
+    border: 1px solid #959595;
+    margin: 0;
+    padding: 2px 8px;
+    z-index: 102;
+    color: #000;
+    font-size: 80%;
+    width: auto;
+    white-space: nowrap;
+}
+
+#MathJax_MSIE_Frame {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    z-index: 101;
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.MathJax_Error {
+    color: #C00;
+    font-style: italic;
+}
