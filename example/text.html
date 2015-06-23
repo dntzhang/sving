@@ -1,0 +1,20 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Sword--Scalable Vector Paper</title>
+</head>
+<body>
+    <div id="svpCtt" style="text-align:center;"></div>
+    <script src="../dist/sword.js"></script>
+    <script>
+        var sword = Sword("#svpCtt", 900, 500);
+        var text = sword.text("Sword:Scalable Vector Paper", "50px Helvetica");
+        //attr
+        text.attr({ "fill": "yellow", "stroke": "red" });
+        //transform
+        text.left = 200;
+        text.top = 300;
+        text.skewX = 30;
+    </script>
+</body>
+</html>
