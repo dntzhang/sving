@@ -19,7 +19,8 @@ gulp.task('build', function () {
         'src/matrix2d.js',
         'src/observe.js',
         'src/sword.js',
-
+        'src/path-transition.js',
+        
         'src/outro.js'
 
     ])
