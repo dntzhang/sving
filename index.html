@@ -93,11 +93,9 @@
         //为了演示
         var skewStep = 1, str = "Sword:MadeSVGEasy!", strLen = str.length, sIndex = 0;
         setInterval(function () {
-            if (sIndex > strLen - 1) sIndex = 0;
-     
+            if (sIndex > strLen - 1) sIndex = 0;   
             path2.to(helvetica[str[sIndex]], 200);
             sIndex++;
-
         }, 1000);
 
         setInterval(function () {
@@ -212,6 +210,20 @@ text.attr({ <span class="hljs-string">"fill"</span>: <span class="hljs-string">"
 text.left = <span class="hljs-number">200</span>;
 text.top = <span class="hljs-number">260</span>;
 </code></pre>
+
+    <pre class="javascript hljs"><code class="js"><span class="hljs-keyword">var</span> path2 = sword.path(helvetica[<span class="hljs-string">"!"</span>]);
+path2.left = <span class="hljs-number">50</span>;
+path2.top = <span class="hljs-number">170</span>;
+path2.attr({ <span class="hljs-string">"fill"</span>: <span class="hljs-string">"#D3731F"</span>, <span class="hljs-string">"stroke"</span>: <span class="hljs-string">"#2D9EBC"</span> });
+<span class="hljs-comment">//为了演示</span>
+<span class="hljs-keyword">var</span> skewStep = <span class="hljs-number">1</span>, str = <span class="hljs-string">"Sword:MadeSVGEasy!"</span>, strLen = str.length, sIndex = <span class="hljs-number">0</span>;
+setInterval(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">if</span> (sIndex &gt; strLen - <span class="hljs-number">1</span>) sIndex = <span class="hljs-number">0</span>;   
+    path2.to(helvetica[str[sIndex]], <span class="hljs-number">200</span>);
+    sIndex++;
+}, <span class="hljs-number">1000</span>);
+</code></pre>
+
        <a href="https://github.com/AlloyTeam/Sword" target="_blank" style="position: absolute; right: 0; top: 0;">
         <img src="http://alloyteam.github.io/AlloyRenderingEngine/asset/img/github.png" alt="" />
     </a>
@@ -229,7 +241,7 @@ text.top = <span class="hljs-number">260</span>;
             pres[index].style.display = "none";
         }
 
-        [sword.svg, appleIcon, rect2, rect, line, ellipse, circle, image, group, text].map(function (item, index) {
+        [sword.svg, appleIcon, rect2, rect, line, ellipse, circle, image, group, text,path2].map(function (item, index) {
             item.addEventListener("mousemove", function (evt) {
                 showCode(index, evt);
             }, false);
