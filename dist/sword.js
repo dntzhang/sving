@@ -553,13 +553,13 @@ var Sword = function (selector, width, height) {
                         r[1] = +pa[1] + x;
                         break;
                     case "R":
-                        var dots = [x, y][concat](pa.slice(1));
+                        var dots = [x, y].concat(pa.slice(1));
                         for (var j = 2, jj = dots.length; j < jj; j++) {
                             dots[j] = +dots[j] + x;
                             dots[++j] = +dots[j] + y;
                         }
                         res.pop();
-                        res = res[concat](catmullRom2bezier(dots, crz));
+                        res = res.concat(catmullRom2bezier(dots, crz));
                         break;
                     case "M":
                         mx = +pa[1] + x;
@@ -570,10 +570,10 @@ var Sword = function (selector, width, height) {
                         }
                 }
             } else if (pa[0] == "R") {
-                dots = [x, y][concat](pa.slice(1));
+                dots = [x, y].concat(pa.slice(1));
                 res.pop();
-                res = res[concat](catmullRom2bezier(dots, crz));
-                r = ["R"][concat](pa.slice(-2));
+                res = res.concat(catmullRom2bezier(dots, crz));
+                r = ["R"].concat(pa.slice(-2));
             } else {
                 for (var k = 0, kk = pa.length; k < kk; k++) {
                     r[k] = pa[k];
@@ -643,7 +643,7 @@ var Sword = function (selector, width, height) {
                         d.Y = path[2];
                         break;
                     case "A":
-                        path = ["C"][concat](a2c[apply](0, [d.x, d.y][concat](path.slice(1))));
+                        path = ["C"].concat(a2c[apply](0, [d.x, d.y].concat(path.slice(1))));
                         break;
                     case "S":
                         if (pcom == "C" || pcom == "S") { // In "S" case we have to take into account, if the previous command is C/S.
@@ -654,7 +654,7 @@ var Sword = function (selector, width, height) {
                             nx = d.x;
                             ny = d.y;
                         }
-                        path = ["C", nx, ny][concat](path.slice(1));
+                        path = ["C", nx, ny].concat(path.slice(1));
                         break;
                     case "T":
                         if (pcom == "Q" || pcom == "T") { // In "T" case we have to take into account, if the previous command is Q/T.
@@ -694,7 +694,7 @@ var Sword = function (selector, width, height) {
                     while (pi.length) {
                         pcoms1[i] = "A"; // if created multiple C:s, their original seg is saved
                         p2 && (pcoms2[i] = "A"); // the same as above
-                        pp.splice(i++, 0, ["C"][concat](pi.splice(0, 6)));
+                        pp.splice(i++, 0, ["C"].concat(pi.splice(0, 6)));
                     }
                     pp.splice(i, 1);
                     ii = Math.max(p.length, p2 && p2.length || 0);
@@ -794,12 +794,15 @@ var Sword = function (selector, width, height) {
         var animPath = function (element, path, ms, ease) {
 
             var time = Date.now() - start;
-            if (time < ms) {
+          
+            var pos = time / ms;
 
-
-
+            if (pos > 1) {
+                pos = 1;
+                element.attr("d", path);
+            } else {
                 var now = [];
-                var pos = time / ms;
+
                 for (var i = 0, ii = fromD.length; i < ii; i++) {
                     now[i] = [fromD[i][0]];
                     for (var j = 1, jj = fromD[i].length; j < jj; j++) {
@@ -809,13 +812,14 @@ var Sword = function (selector, width, height) {
                 }
                 now = now.join(" ");
                 element.attr("d", now);
-
-
-
-                requestAnimFrame(function () {
-                    animPath(element, path, ms, ease);
-                });
             }
+          
+               
+           
+        if(pos!==1)
+            requestAnimFrame(function () {
+                animPath(element, path, ms, ease);
+            });
         }
 
         animPath(element, path, ms, ease);

@@ -9,6 +9,7 @@
     <div id="swordCtt" style="text-align: center;"></div>
      <div  style="text-align: center;">鼠标移上去看代码</div>
     <script src="dist/sword.js"></script>
+    <script src="asset/helvetica.js"></script>
     <script>
         var sword = Sword("#swordCtt", 900, 500);
 
@@ -85,9 +86,19 @@
         group.left = 740;
         group.top = 420;
 
-
+        var path2 = sword.path(helvetica.a);
+        path2.left = 50;
+        path2.top = 170;
         //为了演示
-        var skewStep = 1;
+        var skewStep = 1, str = "Sword:MadeSVGEasy!", strLen = str.length, sIndex = 0;
+        setInterval(function () {
+            if (sIndex > strLen - 1) sIndex = 0;
+     
+            path2.to(helvetica[str[sIndex]], 200);
+            sIndex++;
+
+        }, 1000);
+
         setInterval(function () {
             rect.rotation++;
             rect2.rotation++;
