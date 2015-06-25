@@ -53,7 +53,6 @@ var $ = function (el, attr) {
 };
 
 var _Sword = function (selector, width, height) {
-
     this.parent = typeof selector === "string" ? document.querySelector(selector) : selector;
     this.svg = document.createElementNS(svgNS, "svg");
     //debug  'style', 'border: 1px solid black;
@@ -95,6 +94,7 @@ _Sword.prototype = {
     path: function (d) {
 
         var path = $("path", { d: d });
+        path.to = _Sword.pathTo;
         this.svg.appendChild(path);
         return path;
     },
@@ -143,5 +143,6 @@ _Sword.prototype = {
 }
 
 var Sword = function (selector, width, height) {
+    
     return new _Sword(selector, width, height)
 }
