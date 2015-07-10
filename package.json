@@ -1,6 +1,6 @@
 {
   "name": "alloysword",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "made svg easy",
   "main": "sword.js",
   "scripts": {
