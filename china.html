@@ -3,8 +3,11 @@
 <head>
     <title></title>
 </head>
-<body style="background-color:#ccc;">
-    <div id="swordCtt" style="text-align: center;"></div>
+<body style="background-color:#ccc;text-align: center;">
+    <div id="swordCtt"></div>
+    <div>
+        滚动滚轮缩放
+    </div>
     <script src="dist/sword.js"></script>
     <script src="asset/china.js"></script>
 
@@ -17,17 +20,17 @@
             var offset = sword.svg.getBoundingClientRect();
 
             function init() {
-
-                for (var key in chinaPath) {
-                    if (chinaPath.hasOwnProperty(key)) {
-                        var path = sword.path(chinaPath[key].path);
-                        path.name = chinaPath[key].name;
+                var shapes = chinaMapConfig.shapes;
+                for (var key in shapes) {
+                    if (shapes.hasOwnProperty(key)) {
+                        var path = sword.path(shapes[key]);
+                        path.name =key;
                         bindEvt(path);
                         group.add(path);
                     }
                 }
-                group.originX = 450;
-                group.originY = 335;
+                group.originX = 280;
+                group.originY = 235;
                 group.left = 450;
                 group.top = 335;
 
