@@ -2,9 +2,9 @@
 
 made SVG super easy.
 
-Examples of introduction [the website](http://alloyteam.github.io/Sword/)
+Examples of introduction [the website](http://dntzhang.github.io/Sword/)
 
-Examples of Application [the website](http://alloyteam.github.io/Sword/china.html) 
+Examples of Application [the website](http://dntzhang.github.io/Sword/china.html) 
 
 
 # Install
