@@ -142,7 +142,7 @@ _Sword.prototype = {
     }
 }
 
-var Sword = function (selector, width, height) {
+var Sving = function (selector, width, height) {
     
     return new _Sword(selector, width, height)
 }

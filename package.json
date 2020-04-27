@@ -1,31 +1,32 @@
 {
-  "name": "alloysword",
-  "version": "0.0.2",
-  "description": "made svg easy",
-  "main": "sword.js",
+  "name": "sving",
+  "version": "0.0.0",
+  "description": "Made SVG Easy.",
+  "main": "dist/sving.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/AlloyTeam/Sword"
+    "url": "https://github.com/dntzhang/sving"
   },
   "keywords": [
-    "svg"
+    "svg",
+    "sving"
   ],
   "dependencies": {},
   "devDependencies": {
     "gulp": "^3.8.1",
     "gulp-concat": "latest",
-	"gulp-uglify": "latest",
-	"gulp-rename": "latest", 
-	"gulp-header": "latest",
-	"gulp-watch": "latest"    	
+    "gulp-uglify": "latest",
+    "gulp-rename": "latest",
+    "gulp-header": "latest",
+    "gulp-watch": "latest"
   },
   "author": "dntzhang",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/AlloyTeam/Sword/issues/new"
+    "url": "https://github.com/dntzhang/sving/issues/new"
   },
-  "homepage": "http://alloyteam.github.io/Sword/"
+  "homepage": "http://dntzhang.github.io/sving/"
 }

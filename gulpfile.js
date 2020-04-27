@@ -5,11 +5,11 @@ var rename = require('gulp-rename');
 var header = require('gulp-header');
 var watch = require('gulp-watch');
 
-var headerComment = '/* Sword\n' +
-                     ' * By AlloyTeam http://www.alloyteam.com/\n'+
-                     ' * Github: https://github.com/AlloyTeam/Sword\n' +
-                     ' * MIT Licensed.\n' +
-                     ' */\n';
+var headerComment = '/* Sving\n' +
+    ' * By dntzhang https://github.com/dntzhang/\n' +
+    ' * Github: https://github.com/dntzhang/sving\n' +
+    ' * MIT Licensed.\n' +
+    ' */\n';
 
 gulp.task('build', function () {
     gulp.src([
@@ -18,16 +18,16 @@ gulp.task('build', function () {
 
         'src/matrix2d.js',
         'src/observe.js',
-        'src/sword.js',
+        'src/sving.js',
         'src/path-transition.js',
-        
+
         'src/outro.js'
 
     ])
-        .pipe(concat('sword.js'))
+        .pipe(concat('sving.js'))
         .pipe(gulp.dest('dist'))
         .pipe(uglify())
-        .pipe(rename('sword.min.js'))
+        .pipe(rename('sving.min.js'))
         .pipe(header(headerComment))
         .pipe(gulp.dest('dist'));
 });
@@ -38,4 +38,4 @@ gulp.task('watch', function () {
 });
 
 
-gulp.task('default', ['build','watch']);
+gulp.task('default', ['build', 'watch']);

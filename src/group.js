@@ -1,9 +1,9 @@
 ﻿//group中可放入group
 
-    var Group = function () {
-        this.node = document.createElementNS(svgNS, "g");
+var Group = function () {
+    this.node = document.createElementNS(svgNS, "g");
 
-    }
+}
 
 
 //{
@@ -40,7 +40,7 @@
 //    "stroke-width": 1,
 //    target: "_blank",
 //    "text-anchor": "middle",
-//    title: "sword",
+//    title: "sving",
 //    transform: "",
 //    width: 0,
 //    x: 0,

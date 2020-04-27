@@ -1,47 +1,47 @@
-# Sword
+# Sving
 
 made SVG super easy.
 
-Examples of introduction [the website](http://dntzhang.github.io/Sword/)
+Examples of introduction [the website](http://dntzhang.github.io/Sving/)
 
-Examples of Application [the website](http://dntzhang.github.io/Sword/china.html) 
+Examples of Application [the website](http://dntzhang.github.io/Sving/china.html) 
 
 
 # Install
 
-the file is  here: [sword.js](https://raw.githubusercontent.com/AlloyTeam/Sword/master/dist/sword.js) or [sword.min.js](https://raw.githubusercontent.com/AlloyTeam/Sword/master/dist/sword.min.js)
+the file is  here: [sving.js](https://raw.githubusercontent.com/dntzhang/Sving/master/dist/sving.js) or [sving.min.js](https://raw.githubusercontent.com/dntzhang/Sving/master/dist/sving.min.js)
 
 You can also install it via npm:
 
 ```html
-npm install alloysword
+npm install sving
 ```
 
-Sword can be used in the CommonJS/AMD module definition environment, but also directly through the script tag reference in your page ,such as:
+Sving can be used in the CommonJS/AMD module definition environment, but also directly through the script tag reference in your page ,such as:
 
 ```html
-<script src="sword.js"></script>
+<script src="sving.js"></script>
 ```
 
-you can get the Sword module by synchronizing require in the AMD module definition environment:
+you can get the Sving module by synchronizing require in the AMD module definition environment:
 
 ```javascript
 define(function (require) {
-    var Sword = require('sword');
+    var Sving = require('sving');
 });
 ```
 
 or asynchronous require：
 
 ```javascript
-require([ 'sword' ], function (Sword) {
+require([ 'sving' ], function (Sving) {
 });
 ```
 
 or  require in the CommonJS module definition environment:
 
 ```javascript
-var Sword = require('sword');
+var Sving = require('sving');
 ```
 
 # Many thanks to
