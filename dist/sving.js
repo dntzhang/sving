@@ -233,6 +233,12 @@
             this.children.push(child);
             this.svg.append(child.ele);
         };
+        Stage.prototype.swap = function(childA, childB) {
+            var cloneA = childA.ele.cloneNode(!0);
+            var cloneB = childB.ele.cloneNode(!0);
+            childB.ele.parentNode.replaceChild(cloneA, childB.ele);
+            childA.ele.parentNode.replaceChild(cloneB, childA.ele);
+        };
         return Stage;
     }();
     var BaseObject = function() {
@@ -240,7 +246,7 @@
             var _this = this;
             _classCallCheck$1(this, BaseObject);
             this.opacity = this.scaleX = this.scaleY = 1;
-            this.tx = this.ty = this.rotation = this.skewX = this.skewY = this.originX = this.originY = 0;
+            this.left = this.top = this.rotation = this.skewX = this.skewY = this.originX = this.originY = 0;
             this.matrix = Matrix2D.identity;
             this.ele = null;
             obaa(this, [ "left", "top", "scaleX", "scaleY", "rotation", "skewX", "skewY", "originX", "originY" ], function() {

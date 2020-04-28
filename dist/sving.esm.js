@@ -314,6 +314,19 @@ var Stage = function () {
     this.svg.append(child.ele);
   };
 
+  //can't change z-index, use svg2 z-order ?
+  //https://stackoverflow.com/questions/17786618/how-to-use-z-index-in-svg-elements
+
+
+  Stage.prototype.swap = function swap(childA, childB) {
+
+    var cloneA = childA.ele.cloneNode(true);
+    var cloneB = childB.ele.cloneNode(true);
+
+    childB.ele.parentNode.replaceChild(cloneA, childB.ele);
+    childA.ele.parentNode.replaceChild(cloneB, childA.ele);
+  };
+
   return Stage;
 }();
 
@@ -329,7 +342,7 @@ var BaseObject = function () {
     _classCallCheck$1(this, BaseObject);
 
     this.opacity = this.scaleX = this.scaleY = 1;
-    this.tx = this.ty = this.rotation = this.skewX = this.skewY = this.originX = this.originY = 0;
+    this.left = this.top = this.rotation = this.skewX = this.skewY = this.originX = this.originY = 0;
 
     this.matrix = Matrix2D.identity;
 

@@ -18,6 +18,18 @@ class Stage {
     this.children.push(child)
     this.svg.append(child.ele)
   }
+
+  //can't change z-index, use svg2 z-order ?
+  //https://stackoverflow.com/questions/17786618/how-to-use-z-index-in-svg-elements
+  swap(childA, childB) {
+
+    var cloneA = childA.ele.cloneNode(true)
+    var cloneB = childB.ele.cloneNode(true)
+
+    childB.ele.parentNode.replaceChild(cloneA, childB.ele)
+    childA.ele.parentNode.replaceChild(cloneB, childA.ele)
+
+  }
 }
 
 

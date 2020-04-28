@@ -7,7 +7,7 @@ const xlink = "http://www.w3.org/1999/xlink"
 class BaseObject {
   constructor() {
     this.opacity = this.scaleX = this.scaleY = 1
-    this.tx = this.ty = this.rotation = this.skewX = this.skewY = this.originX = this.originY = 0
+    this.left = this.top = this.rotation = this.skewX = this.skewY = this.originX = this.originY = 0
 
     this.matrix = Matrix2D.identity
 

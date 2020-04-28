@@ -8,14 +8,20 @@
 <body>
   <div id="svingRoot" style="text-align:center;"></div>
   <script src="../dist/sving.js"></script>
+
+  <style>
+    svg {
+      border: 1px solid black;
+    }
+  </style>
   <script>
 
     var stage = new sving.Stage('#svingRoot', 900, 500)
-    var text = new sving.Text("Sving:Scalable Vector Paper", "50px Helvetica")
+    var text = new sving.Text("Hello Sving", "50px Helvetica")
     text.setAttrs({ "fill": "yellow", "stroke": "red" })
 
-    text.left = 200;
-    text.top = 300;
+    text.left = 310;
+    text.top = 240;
     text.skewX = 30;
     stage.add(text)
 
