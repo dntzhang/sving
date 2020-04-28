@@ -294,6 +294,8 @@
 
   function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+  var svgNS = "http://www.w3.org/2000/svg";
+
   var Stage = function () {
     function Stage(selector, width, height) {
       _classCallCheck(this, Stage);
@@ -312,7 +314,7 @@
 
     Stage.prototype.add = function add(child) {
       this.children.push(child);
-      this.svg.append(child);
+      this.svg.append(child.ele);
     };
 
     return Stage;
@@ -320,17 +322,89 @@
 
   function _classCallCheck$1(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-  var Text = function Text(text, font) {
-    _classCallCheck$1(this, Text);
-
-    this.text = text;
-    this.font = font;
-
-    this.ele = null;
-  };
-
   var svgNS$1 = "http://www.w3.org/2000/svg";
   var xlink = "http://www.w3.org/1999/xlink";
+
+  var BaseObject = function () {
+    function BaseObject() {
+      var _this = this;
+
+      _classCallCheck$1(this, BaseObject);
+
+      this.opacity = this.scaleX = this.scaleY = 1;
+      this.tx = this.ty = this.rotation = this.skewX = this.skewY = this.originX = this.originY = 0;
+
+      this.matrix = Matrix2D.identity;
+
+      this.ele = null;
+
+      obaa(this, ["left", "top", "scaleX", "scaleY", "rotation", "skewX", "skewY", "originX", "originY"], function () {
+
+        _this.matrix.identity().appendTransform(_this.left, _this.top, _this.scaleX, _this.scaleY, _this.rotation, _this.skewX, _this.skewY, _this.originX, _this.originY);
+
+        _this.setAttrs({
+          "transform": "matrix(" + _this.matrix.a + "," + _this.matrix.b + "," + _this.matrix.c + "," + _this.matrix.d + "," + _this.matrix.tx + "," + _this.matrix.ty + ")"
+        });
+      });
+
+      obaa(this, ["opacity"], function () {
+        _this.setAttrs({ "opacity": _this.opacity });
+      });
+    }
+
+    BaseObject.prototype.setAttrs = function setAttrs(attrs) {
+      var el = this.ele;
+      for (var key in attrs) {
+        if (attrs.hasOwnProperty(key)) {
+          if (key.substring(0, 6) == "xlink:") {
+            el.setAttributeNS(xlink, key.substring(6), String(attrs[key]));
+          } else {
+            el.setAttribute(key, String(attrs[key]));
+          }
+        }
+      }
+    };
+
+    BaseObject.prototype.getAttr = function getAttr(attr) {
+      if (attr.indexOf(":") !== -1) {
+        return this.getAttributeNS(svgNS$1, attr);
+      } else {
+        return this.getAttribute(attr);
+      }
+    };
+
+    return BaseObject;
+  }();
+
+  function _classCallCheck$2(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+  function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+  function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+  var Text = function (_BaseObject) {
+    _inherits(Text, _BaseObject);
+
+    function Text(textContent, font) {
+      _classCallCheck$2(this, Text);
+
+      var _this = _possibleConstructorReturn(this, _BaseObject.call(this));
+
+      _this.textContent = textContent;
+      _this.font = font;
+
+      _this.ele = document.createElementNS("http://www.w3.org/2000/svg", 'text');
+
+      _this.ele.style.font = font;
+      _this.ele.textContent = textContent;
+      return _this;
+    }
+
+    return Text;
+  }(BaseObject);
+
+  var svgNS$2 = "http://www.w3.org/2000/svg";
+  var xlink$1 = "http://www.w3.org/1999/xlink";
   var $ = function $(el, attr) {
     if (attr) {
       if (typeof el == "string") {
@@ -339,7 +413,7 @@
       for (var key in attr) {
         if (attr.hasOwnProperty(key)) {
           if (key.substring(0, 6) == "xlink:") {
-            el.setAttributeNS(xlink, key.substring(6), String(attr[key]));
+            el.setAttributeNS(xlink$1, key.substring(6), String(attr[key]));
           } else {
             el.setAttribute(key, String(attr[key]));
           }
@@ -366,7 +440,7 @@
         if (arguments.length === 1) {
           if (typeof attr === "string") {
             if (attr.indexOf(":") !== -1) {
-              return this.getAttributeNS(svgNS$1, attr);
+              return this.getAttributeNS(svgNS$2, attr);
             } else {
               return this.getAttribute(attr);
             }
@@ -386,7 +460,7 @@
 
   var _Sving = function _Sving(selector, width, height) {
     this.parent = typeof selector === "string" ? document.querySelector(selector) : selector;
-    this.svg = document.createElementNS(svgNS$1, "svg");
+    this.svg = document.createElementNS(svgNS$2, "svg");
     //debug  'style', 'border: 1px solid black
     this.svg.setAttribute('style', 'border: 1px solid blackoverflow: hidden');
 

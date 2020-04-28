@@ -122,6 +122,25 @@
     function _classCallCheck$1(instance, Constructor) {
         if (!(instance instanceof Constructor)) throw new TypeError("Cannot call a class as a function");
     }
+    function _classCallCheck$2(instance, Constructor) {
+        if (!(instance instanceof Constructor)) throw new TypeError("Cannot call a class as a function");
+    }
+    function _possibleConstructorReturn(self, call) {
+        if (!self) throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+        return call && ("object" == typeof call || "function" == typeof call) ? call : self;
+    }
+    function _inherits(subClass, superClass) {
+        if ("function" != typeof superClass && null !== superClass) throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
+        subClass.prototype = Object.create(superClass && superClass.prototype, {
+            constructor: {
+                value: subClass,
+                enumerable: !1,
+                writable: !0,
+                configurable: !0
+            }
+        });
+        if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+    }
     Matrix2D.DEG_TO_RAD = Math.PI / 180;
     Matrix2D.identity = null;
     Matrix2D.prototype = {
@@ -198,6 +217,7 @@
     Array.prototype.size = function(length) {
         this.length = length;
     };
+    var svgNS = "http://www.w3.org/2000/svg";
     var Stage = function() {
         function Stage(selector, width, height) {
             _classCallCheck(this, Stage);
@@ -211,17 +231,54 @@
         }
         Stage.prototype.add = function(child) {
             this.children.push(child);
-            this.svg.append(child);
+            this.svg.append(child.ele);
         };
         return Stage;
     }();
-    var Text = function Text(text, font) {
-        _classCallCheck$1(this, Text);
-        this.text = text;
-        this.font = font;
-        this.ele = null;
-    };
-    var svgNS$1 = "http://www.w3.org/2000/svg";
+    var BaseObject = function() {
+        function BaseObject() {
+            var _this = this;
+            _classCallCheck$1(this, BaseObject);
+            this.opacity = this.scaleX = this.scaleY = 1;
+            this.tx = this.ty = this.rotation = this.skewX = this.skewY = this.originX = this.originY = 0;
+            this.matrix = Matrix2D.identity;
+            this.ele = null;
+            obaa(this, [ "left", "top", "scaleX", "scaleY", "rotation", "skewX", "skewY", "originX", "originY" ], function() {
+                _this.matrix.identity().appendTransform(_this.left, _this.top, _this.scaleX, _this.scaleY, _this.rotation, _this.skewX, _this.skewY, _this.originX, _this.originY);
+                _this.setAttrs({
+                    transform: "matrix(" + _this.matrix.a + "," + _this.matrix.b + "," + _this.matrix.c + "," + _this.matrix.d + "," + _this.matrix.tx + "," + _this.matrix.ty + ")"
+                });
+            });
+            obaa(this, [ "opacity" ], function() {
+                _this.setAttrs({
+                    opacity: _this.opacity
+                });
+            });
+        }
+        BaseObject.prototype.setAttrs = function(attrs) {
+            var el = this.ele;
+            for (var key in attrs) if (attrs.hasOwnProperty(key)) if ("xlink:" == key.substring(0, 6)) el.setAttributeNS("http://www.w3.org/1999/xlink", key.substring(6), String(attrs[key])); else el.setAttribute(key, String(attrs[key]));
+        };
+        BaseObject.prototype.getAttr = function(attr) {
+            if (-1 !== attr.indexOf(":")) return this.getAttributeNS("http://www.w3.org/2000/svg", attr); else return this.getAttribute(attr);
+        };
+        return BaseObject;
+    }();
+    var Text = function(_BaseObject) {
+        function Text(textContent, font) {
+            _classCallCheck$2(this, Text);
+            var _this = _possibleConstructorReturn(this, _BaseObject.call(this));
+            _this.textContent = textContent;
+            _this.font = font;
+            _this.ele = document.createElementNS("http://www.w3.org/2000/svg", 'text');
+            _this.ele.style.font = font;
+            _this.ele.textContent = textContent;
+            return _this;
+        }
+        _inherits(Text, _BaseObject);
+        return Text;
+    }(BaseObject);
+    var svgNS$2 = "http://www.w3.org/2000/svg";
     var $ = function $(el, attr) {
         if (attr) {
             if ("string" == typeof el) el = $(el);
@@ -242,7 +299,7 @@
                 el.setAttribute("opacity", this.opacity);
             });
             el.attr = function(attr, value) {
-                if (1 === arguments.length) if ("string" == typeof attr) if (-1 !== attr.indexOf(":")) return this.getAttributeNS(svgNS$1, attr); else return this.getAttribute(attr); else return $(this, attr); else {
+                if (1 === arguments.length) if ("string" == typeof attr) if (-1 !== attr.indexOf(":")) return this.getAttributeNS(svgNS$2, attr); else return this.getAttribute(attr); else return $(this, attr); else {
                     var obj = {};
                     obj[attr] = value;
                     return $(this, obj);
@@ -253,7 +310,7 @@
     };
     var _Sving = function(selector, width, height) {
         this.parent = "string" == typeof selector ? document.querySelector(selector) : selector;
-        this.svg = document.createElementNS(svgNS$1, "svg");
+        this.svg = document.createElementNS(svgNS$2, "svg");
         this.svg.setAttribute('style', 'border: 1px solid blackoverflow: hidden');
         this.svg.setAttribute('width', width);
         this.svg.setAttribute('height', height);

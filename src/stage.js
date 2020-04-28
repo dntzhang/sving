@@ -1,3 +1,5 @@
+const svgNS = "http://www.w3.org/2000/svg"
+
 class Stage {
   constructor(selector, width, height) {
     this.parent = typeof selector === "string" ? document.querySelector(selector) : selector
@@ -14,7 +16,7 @@ class Stage {
 
   add(child) {
     this.children.push(child)
-    this.svg.append(child)
+    this.svg.append(child.ele)
   }
 }
 
