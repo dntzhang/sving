@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <title>Sving--Scalable Vector Paper</title>
+</head>
+
+<body>
+  <div id="svingRoot" style="text-align:center;"></div>
+  <script src="../dist/sving.js"></script>
+  <script>
+
+    var stage = new sving.Stage('#svingRoot', 900, 500)
+    var text = new sving.Text("Sving:Scalable Vector Paper", "50px Helvetica")
+    text.attr({ "fill": "yellow", "stroke": "red" })
+
+    text.left = 200;
+    text.top = 300;
+    text.skewX = 30;
+    stage.add(text)
+
+
+
+  </script>
+</body>
+
+</html>

@@ -1,5 +1,5 @@
 ﻿import Matrix2D from './matrix2d'
-import observe from './observe'
+import obaa from './obaa'
 
 var svgNS = "http://www.w3.org/2000/svg"
 var xlink = "http://www.w3.org/1999/xlink"
@@ -21,14 +21,14 @@ var $ = function (el, attr) {
     el.opacity = el.scaleX = el.scaleY = 1
     el.left = el.top = el.rotation = el.skewX = el.skewY = el.originX = el.originY = 0
     el.matrix = Matrix2D.identity
-    observe(el, ["left", "top", "scaleX", "scaleY", "rotation", "skewX", "skewY", "originX", "originY"], function () {
+    obaa(el, ["left", "top", "scaleX", "scaleY", "rotation", "skewX", "skewY", "originX", "originY"], function () {
 
       this.matrix.identity().appendTransform(this.left, this.top, this.scaleX, this.scaleY, this.rotation, this.skewX, this.skewY, this.originX, this.originY)
 
       $(el, { "transform": "matrix(" + this.matrix.a + "," + this.matrix.b + "," + this.matrix.c + "," + this.matrix.d + "," + this.matrix.tx + "," + this.matrix.ty + ")" })
     })
 
-    observe(el, ["opacity"], function () {
+    obaa(el, ["opacity"], function () {
       el.setAttribute("opacity", this.opacity)
     })
 

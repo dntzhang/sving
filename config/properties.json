@@ -1,8 +1,12 @@
 {
   "props": {
-    "cname": 4,
+    "cname": 8,
     "props": {
-      "$_getRootName": "e"
+      "$_getRootName": "e",
+      "$__o_": "f",
+      "$__r_": "g",
+      "$__p_": "h",
+      "$__c_": "i"
     }
   },
   "vars": {
