@@ -116,6 +116,12 @@
     function getRootName(prop, path) {
         if ('#' === path) return prop; else return path.split('-')[1];
     }
+    function _classCallCheck(instance, Constructor) {
+        if (!(instance instanceof Constructor)) throw new TypeError("Cannot call a class as a function");
+    }
+    function _classCallCheck$1(instance, Constructor) {
+        if (!(instance instanceof Constructor)) throw new TypeError("Cannot call a class as a function");
+    }
     Matrix2D.DEG_TO_RAD = Math.PI / 180;
     Matrix2D.identity = null;
     Matrix2D.prototype = {
@@ -192,7 +198,30 @@
     Array.prototype.size = function(length) {
         this.length = length;
     };
-    var svgNS = "http://www.w3.org/2000/svg";
+    var Stage = function() {
+        function Stage(selector, width, height) {
+            _classCallCheck(this, Stage);
+            this.parent = "string" == typeof selector ? document.querySelector(selector) : selector;
+            this.svg = document.createElementNS(svgNS, "svg");
+            this.svg.setAttribute('width', width);
+            this.svg.setAttribute('height', height);
+            this.svg.setAttributeNS("http://www.w3.org/2000/xmlns/", "xmlns:xlink", "http://www.w3.org/1999/xlink");
+            this.parent.appendChild(this.svg);
+            this.children = [];
+        }
+        Stage.prototype.add = function(child) {
+            this.children.push(child);
+            this.svg.append(child);
+        };
+        return Stage;
+    }();
+    var Text = function Text(text, font) {
+        _classCallCheck$1(this, Text);
+        this.text = text;
+        this.font = font;
+        this.ele = null;
+    };
+    var svgNS$1 = "http://www.w3.org/2000/svg";
     var $ = function $(el, attr) {
         if (attr) {
             if ("string" == typeof el) el = $(el);
@@ -213,7 +242,7 @@
                 el.setAttribute("opacity", this.opacity);
             });
             el.attr = function(attr, value) {
-                if (1 === arguments.length) if ("string" == typeof attr) if (-1 !== attr.indexOf(":")) return this.getAttributeNS(svgNS, attr); else return this.getAttribute(attr); else return $(this, attr); else {
+                if (1 === arguments.length) if ("string" == typeof attr) if (-1 !== attr.indexOf(":")) return this.getAttributeNS(svgNS$1, attr); else return this.getAttribute(attr); else return $(this, attr); else {
                     var obj = {};
                     obj[attr] = value;
                     return $(this, obj);
@@ -224,7 +253,7 @@
     };
     var _Sving = function(selector, width, height) {
         this.parent = "string" == typeof selector ? document.querySelector(selector) : selector;
-        this.svg = document.createElementNS(svgNS, "svg");
+        this.svg = document.createElementNS(svgNS$1, "svg");
         this.svg.setAttribute('style', 'border: 1px solid blackoverflow: hidden');
         this.svg.setAttribute('width', width);
         this.svg.setAttribute('height', height);
@@ -319,10 +348,11 @@
             this.svg.removeChild(child);
         }
     };
-    var Sving = function(selector, width, height) {
+    var sving = function(selector, width, height) {
         return new _Sving(selector, width, height);
     };
-    window.Sving = Sving;
-    if ('undefined' != typeof module) module.exports = Sving; else self.sving = Sving;
+    sving.Stage = Stage;
+    sving.Text = Text;
+    if ('undefined' != typeof module) module.exports = sving; else self.sving = sving;
 }();
 //# sourceMappingURL=sving.js.map

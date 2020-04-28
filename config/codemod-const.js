@@ -1,7 +1,7 @@
 /* eslint no-console:0 */
 
 /** Find constants (identified by ALL_CAPS_DECLARATIONS), and inline them globally.
- *	This is safe because Sving *only* uses global constants.
+ *	This is safe because sving *only* uses global constants.
  */
 export default (file, api) => {
 	let j = api.jscodeshift,
@@ -12,7 +12,7 @@ export default (file, api) => {
 	code
 		.find(j.VariableDeclaration)
 		.filter(decl => {
-			for (let i = decl.value.declarations.length; i--; ) {
+			for (let i = decl.value.declarations.length; i--;) {
 				let node = decl.value.declarations[i],
 					name = node.id && node.id.name,
 					init = node.init;
@@ -37,7 +37,7 @@ export default (file, api) => {
 		.filter(
 			path => path.value.name && constants.hasOwnProperty(path.value.name)
 		)
-		.replaceWith(path => (found++, constants[path.value.name]));
+		.replaceWith(path => (found++ , constants[path.value.name]));
 
 	return found ? code.toSource({ quote: "single" }) : null;
 };

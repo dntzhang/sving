@@ -18,9 +18,9 @@ export default {
 		memory({
 			path: "src/sving.js",
 			contents: `
-				import Sving from './sving';
-				if (typeof module!='undefined') module.exports = Sving;
-				else self.Sving = Sving;
+				import sving from './sving';
+				if (typeof module!='undefined') module.exports = sving;
+				else self.sving = sving;
 			`
 		}),
 		nodeResolve({
@@ -49,7 +49,7 @@ export default {
 			plugins: [
 				"transform-decorators-legacy",
 				"transform-class-properties",
-				["transform-react-jsx", { pragma: "Sving.h" }]
+				["transform-react-jsx", { pragma: "sving.h" }]
 			]
 		})
 	]

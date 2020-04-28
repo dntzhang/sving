@@ -2,22 +2,22 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
-    <title>Sving--Scalable Vector Paper</title>
+  <title>Sving--Scalable Vector Paper</title>
 </head>
 
 <body>
-    <div id="svpCtt" style="text-align:center;"></div>
-    <script src="../dist/sving.js"></script>
-    <script>
-        var sving = Sving("#svpCtt", 900, 500);
-        var text = sving.text("Sving:Scalable Vector Paper", "50px Helvetica");
-        //attr
-        text.attr({ "fill": "yellow", "stroke": "red" });
-        //transform
-        text.left = 200;
-        text.top = 300;
-        text.skewX = 30;
-    </script>
+  <div id="svpCtt" style="text-align:center;"></div>
+  <script src="../dist/sving.js"></script>
+  <script>
+    var sving = sving("#svpCtt", 900, 500);
+    var text = sving.text("Sving:Scalable Vector Paper", "50px Helvetica");
+    //attr
+    text.attr({ "fill": "yellow", "stroke": "red" });
+    //transform
+    text.left = 200;
+    text.top = 300;
+    text.skewX = 30;
+  </script>
 </body>
 
 </html>

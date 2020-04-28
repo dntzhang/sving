@@ -289,7 +289,44 @@ Array.prototype.size = function (length) {
   this.length = length;
 };
 
-var svgNS = "http://www.w3.org/2000/svg";
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Stage = function () {
+  function Stage(selector, width, height) {
+    _classCallCheck(this, Stage);
+
+    this.parent = typeof selector === "string" ? document.querySelector(selector) : selector;
+    this.svg = document.createElementNS(svgNS, "svg");
+    //debug  'style', 'border: 1px solid black
+    //this.svg.setAttribute('style', 'border: 1px solid blackoverflow: hidden')
+
+    this.svg.setAttribute('width', width);
+    this.svg.setAttribute('height', height);
+    this.svg.setAttributeNS("http://www.w3.org/2000/xmlns/", "xmlns:xlink", "http://www.w3.org/1999/xlink");
+    this.parent.appendChild(this.svg);
+    this.children = [];
+  }
+
+  Stage.prototype.add = function add(child) {
+    this.children.push(child);
+    this.svg.append(child);
+  };
+
+  return Stage;
+}();
+
+function _classCallCheck$1(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Text = function Text(text, font) {
+  _classCallCheck$1(this, Text);
+
+  this.text = text;
+  this.font = font;
+
+  this.ele = null;
+};
+
+var svgNS$1 = "http://www.w3.org/2000/svg";
 var xlink = "http://www.w3.org/1999/xlink";
 var $ = function $(el, attr) {
   if (attr) {
@@ -326,7 +363,7 @@ var $ = function $(el, attr) {
       if (arguments.length === 1) {
         if (typeof attr === "string") {
           if (attr.indexOf(":") !== -1) {
-            return this.getAttributeNS(svgNS, attr);
+            return this.getAttributeNS(svgNS$1, attr);
           } else {
             return this.getAttribute(attr);
           }
@@ -346,7 +383,7 @@ var $ = function $(el, attr) {
 
 var _Sving = function _Sving(selector, width, height) {
   this.parent = typeof selector === "string" ? document.querySelector(selector) : selector;
-  this.svg = document.createElementNS(svgNS, "svg");
+  this.svg = document.createElementNS(svgNS$1, "svg");
   //debug  'style', 'border: 1px solid black
   this.svg.setAttribute('style', 'border: 1px solid blackoverflow: hidden');
 
@@ -431,12 +468,13 @@ _Sving.prototype = {
   }
 };
 
-var Sving = function Sving(selector, width, height) {
+var sving = function sving(selector, width, height) {
 
   return new _Sving(selector, width, height);
 };
 
-window.Sving = Sving;
+sving.Stage = Stage;
+sving.Text = Text;
 
-export default Sving;
+export default sving;
 //# sourceMappingURL=sving.esm.js.map

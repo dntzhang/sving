@@ -1,5 +1,7 @@
 ﻿import Matrix2D from './matrix2d'
 import obaa from './obaa'
+import Stage from './stage'
+import Text from './Text'
 
 var svgNS = "http://www.w3.org/2000/svg"
 var xlink = "http://www.w3.org/1999/xlink"
@@ -145,11 +147,13 @@ _Sving.prototype = {
   }
 }
 
-var Sving = function (selector, width, height) {
+var sving = function (selector, width, height) {
 
   return new _Sving(selector, width, height)
 }
 
-window.Sving = Sving
 
-export default Sving
+sving.Stage = Stage
+sving.Text = Text
+
+export default sving
