@@ -290,7 +290,7 @@
             if ("string" == typeof el) el = $(el);
             for (var key in attr) if (attr.hasOwnProperty(key)) if ("xlink:" == key.substring(0, 6)) el.setAttributeNS("http://www.w3.org/1999/xlink", key.substring(6), String(attr[key])); else el.setAttribute(key, String(attr[key]));
         } else {
-            el = document.createElementNS("http://www.w3.org/2000/svg", el);
+            el = document.createElementNS(svgNS$2, el);
             el.style && (el.style.webkitTapHighlightColor = "rgba(0,0,0,0)");
             el.opacity = el.scaleX = el.scaleY = 1;
             el.left = el.top = el.rotation = el.skewX = el.skewY = el.originX = el.originY = 0;

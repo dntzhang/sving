@@ -1,7 +1,8 @@
-﻿
-class Group {
-  constructor() {
+﻿import BaseObject from './base-object'
 
+class Group extends BaseObject {
+  constructor() {
+    this.ele = document.createElementNS("http://www.w3.org/2000/svg", 'g')
   }
 
   add(child) {

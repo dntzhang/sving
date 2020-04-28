@@ -1,0 +1,93 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <title></title>
+</head>
+
+<body style="background-color:#ccc;text-align: center;">
+  <div id="swordCtt"></div>
+  <div>
+    滚动滚轮缩放
+  </div>
+  <script src="../dist/sving.js"></script>
+  <script src="../assets/china.js"></script>
+
+  <script>
+    (function () {
+      var sword = sving("#swordCtt", 900, 670);
+      var group = sword.group();
+      var tip = sword.text("", "20px Helvetica");
+      tip.attr({ "stroke-width": "15", "fill": "white" });
+      var offset = sword.svg.getBoundingClientRect();
+
+      function init() {
+        var shapes = chinaMapConfig.shapes;
+        for (var key in shapes) {
+          if (shapes.hasOwnProperty(key)) {
+            var path = sword.path(shapes[key]);
+            path.name = key;
+            bindEvt(path);
+            group.add(path);
+          }
+        }
+        group.originX = 280;
+        group.originY = 235;
+        group.left = 450;
+        group.top = 335;
+
+        var fixEvt = function (event) {
+          event.delta = (event.wheelDelta) ? event.wheelDelta / 120 : -(event.detail || 0) / 3;
+        };
+        var callback = function (event) {
+          fixEvt(event);
+          if (event.delta > 0) {
+            group.scaleX += 0.1;
+            group.scaleY += 0.1;
+          } else {
+            if (group.scaleX < 0.2) group.scaleX = group.scaleY = 0.2;
+            group.scaleX -= 0.1;
+            group.scaleY -= 0.1;
+          }
+        }
+        addEvent(sword.svg, "mousewheel", callback)
+      }
+
+      var addEvent = function (el, type, fn, capture) {
+        if (type === "mousewheel" && document.mozHidden !== undefined) {
+          type = "DOMMouseScroll";
+        }
+        el.addEventListener(type, function (event) {
+          var type = event.type;
+          if (type == "DOMMouseScroll" || type == "mousewheel") {
+            event.delta = event.wheelDelta ? event.wheelDelta / 120 : -(event.detail || 0) / 3;
+          }
+          fn.call(this, event);
+        }, capture || false);
+      }
+
+      function bindEvt(path) {
+        path.onmouseover = function (evt) {
+          this.attr("fill", "red")
+          tip.textContent = this.name;
+          tip.left = evt.pageX - offset.left + 20;
+          tip.top = evt.pageY - offset.top + 20;
+        }
+        path.onmousemove = function (evt) {
+          this.attr("fill", "red")
+          tip.textContent = this.name;
+          tip.left = evt.pageX - offset.left + 20;
+          tip.top = evt.pageY - offset.top + 20;
+        }
+        path.onmouseout = function () {
+          this.attr("fill", "black");
+          tip.textContent = "";
+        }
+      }
+      init();
+    })()
+  </script>
+
+</body>
+
+</html>

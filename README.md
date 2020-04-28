@@ -2,9 +2,9 @@
 
 Made SVG Easy.
 
-Examples of introduction [the website](http://dntzhang.github.io/sving/)
-
-Examples of Application [the website](http://dntzhang.github.io/sving/china.html) 
+* [Hello Sving](http://dntzhang.github.io/sving/examples/simple.html)
+* [Animation](http://dntzhang.github.io/sving/)
+* [Map](http://dntzhang.github.io/sving/examples/map.html)
 
 
 # Install
